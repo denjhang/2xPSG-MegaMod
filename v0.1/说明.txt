@@ -1,0 +1,37 @@
+natalie — 今天20:47
+bdir high
+bc2 to a0
+bc1 to !CS
+probably
+Denjhang — 今天20:47
+😄 Then I can try it. Does it currently support VGM playback of 2xPSG?
+natalie — 今天20:48
+it should, i just don't have hardware to test atm
+1x opn
+2x opn
+1x 8910
+2x 8910
+^ these should work
+Denjhang — 今天20:50
+So for YM2149, do I need to make any modifications to the circuit?
+natalie — 今天20:50
+i believe ym2149 is a 100% drop-in replacement, except the output volume is slightly different, or something like that
+there was some sound comparison video on youtube
+
+
+
+i don't know the connections for sure at the moment, i have occasional corrupt writes, which could be timing problems, or breadboard problems
+right now i have:
+BC1 - !CS
+BC2 - A0
+BDIR - vcc
+!SEL - gnd
+A8 - vcc
+!A9 - gnd
+!RESET - !IC
+but this might be wrong
+it's probably a better idea to do a dedicated 2xPSG megamod. there are compatibility issues between 2203, 2149, and 8910
+2149 !SEL must be gnd for compatibility with 2203
+but 2149 !SEL as gnd is not compatible with 8910 ("TEST 2" pin on 8910)
+setting !SEL to vcc is possible, but then the software needs to use 0.5x clock rate, which is not compatible with 2203
+could even do a 4xPSG megamod
